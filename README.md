@@ -34,6 +34,13 @@ The agent demonstrates high reasoning capabilities by synthesizing mixed reviews
 > "The atmosphere is noted as being perfect for watching sports... however, potential visitors should be aware of a serious cleanliness concern mentioned in specific reviews (sticky tables)."
 
 ---
+
+## ⚙️ Installation & Setup
+
+### 1. Prerequisites
+Ensure you have [Ollama](https://ollama.com/) installed and running.
+
+### 2. Pull the Models
 ⚙️ Installation & Setup
 1. Prerequisites
 Ensure you have Ollama installed and running on your machine.
@@ -41,11 +48,10 @@ Ensure you have Ollama installed and running on your machine.
 2. Pull the Models
 Open your terminal and run:
 
-Bash
 ollama pull gemma4:e4b
 ollama pull qwen3-embedding:4b
+
 3. Setup Environment
-Bash
 # Clone the repository
 git clone https://github.com/KelvinSim24/Local-AI-Agent-With-RAG.git
 cd Local-AI-Agent-With-RAG
@@ -61,9 +67,11 @@ source venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
+
 4. Run the Agent
-Bash
+
 python main.py
+
 🏗️ Architecture Detail
 Ingestion: vector.py processes realistic_restaurant_reviews.csv, generates high-dimensional vectors using qwen3-embedding, and persists them in a local chroma_langchain_db folder.
 
