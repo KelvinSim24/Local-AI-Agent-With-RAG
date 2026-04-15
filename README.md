@@ -53,8 +53,10 @@ cd Local-AI-Agent-With-RAG
 
 # Create and activate virtual environment
 python -m venv venv
+
 # On Windows:
 .\venv\Scripts\activate
+
 # On Mac/Linux:
 source venv/bin/activate
 
