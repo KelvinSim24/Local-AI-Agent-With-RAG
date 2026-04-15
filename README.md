@@ -34,7 +34,6 @@ The agent demonstrates high reasoning capabilities by synthesizing mixed reviews
 > "The atmosphere is noted as being perfect for watching sports... however, potential visitors should be aware of a serious cleanliness concern mentioned in specific reviews (sticky tables)."
 
 ---
-
 ⚙️ Installation & Setup
 1. Prerequisites
 Ensure you have Ollama installed and running on your machine.
