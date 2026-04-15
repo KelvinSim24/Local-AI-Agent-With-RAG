@@ -35,24 +35,28 @@ The agent demonstrates high reasoning capabilities by synthesizing mixed reviews
 
 ---
 
-## ⚙️ Installation & Setup
+⚙️ Installation & Setup
+1. Prerequisites
+Ensure you have Ollama installed and running on your machine.
 
-### 1. Prerequisites
-Ensure you have [Ollama](https://ollama.com/) installed and running.
+2. Pull the Models
+Open your terminal and run:
 
-### 2. Pull the Models
-```bash
+Bash
 ollama pull gemma4:e4b
 ollama pull qwen3-embedding:4b
 3. Setup Environment
 Bash
 # Clone the repository
-git clone [https://github.com/KelvinSim24/Local-AI-Agent-With-RAG.git](https://github.com/KelvinSim24/Local-AI-Agent-With-RAG.git)
+git clone https://github.com/KelvinSim24/Local-AI-Agent-With-RAG.git
 cd Local-AI-Agent-With-RAG
 
-# Create virtual environment
+# Create and activate virtual environment
 python -m venv venv
+# On Windows:
 .\venv\Scripts\activate
+# On Mac/Linux:
+source venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
@@ -60,19 +64,11 @@ pip install -r requirements.txt
 Bash
 python main.py
 🏗️ Architecture Detail
-Ingestion: vector.py reads realistic_restaurant_reviews.csv, generates embeddings using qwen3, and persists them in a local ./chroma_langchain_db.
+Ingestion: vector.py processes realistic_restaurant_reviews.csv, generates high-dimensional vectors using qwen3-embedding, and persists them in a local chroma_langchain_db folder.
 
-Retrieval: When a user asks a question, the top 8 most relevant review chunks are retrieved.
+Retrieval: The system uses semantic similarity search to pull the top 8 most relevant context chunks based on the user's natural language query.
 
-Generation: The gemma4 model receives the query and the retrieved context, performing a final synthesis to generate the structured response.
+Generation: The gemma4 model acts as the reasoning engine, synthesizing the retrieved reviews into a structured, human-readable summary.
 
 📜 License
 Distributed under the MIT License.
-
-
-***
-
-### Final Professional Touch
-Since your GitHub screenshot shows **techwithtim** as a contributor (because of the initial fork/clone history), if you want this to look like a 100% original project for your portfolio, you can occasionally "detach" it, but for now, it shows you can work with established open-source codebases and improve them with modern models like **Qwen3**.
-
-Your project is now officially ready for the world! Do you want to try adding a specific feat
