@@ -1,28 +1,34 @@
+# Embeddings model is required to convert any text into vector(essentially the numbers), efficiency for model to track any informations precisely
 from langchain_ollama import OllamaEmbeddings
-from langchain_chroma import Chroma
+from langchain_chroma import Chroma  # (Vector Database, that is host locally)
 from langchain_core.documents import Document
 import os
 import pandas as pd
 
 df = pd.read_csv("realistic_restaurant_reviews.csv")
-embeddings = OllamaEmbeddings(model="mxbai-embed-large")
 
-db_location = "./chrome_langchain_db"
+embeddings = OllamaEmbeddings(model="qwen3-embedding:4b")
+
+db_location = "./chroma_langchain_db"
+
+# NOTE: If you previously ran this and it failed,
+# you might need to delete the "./chrome_langchain_db" folder
+# to ensure it recreates the database with the NEW embedding model.
 add_documents = not os.path.exists(db_location)
 
 if add_documents:
     documents = []
     ids = []
-    
+
     for i, row in df.iterrows():
         document = Document(
-            page_content=row["Title"] + " " + row["Review"],
+            page_content=str(row["Title"]) + " " + str(row["Review"]),
             metadata={"rating": row["Rating"], "date": row["Date"]},
             id=str(i)
         )
         ids.append(str(i))
         documents.append(document)
-        
+
 vector_store = Chroma(
     collection_name="restaurant_reviews",
     persist_directory=db_location,
@@ -31,7 +37,7 @@ vector_store = Chroma(
 
 if add_documents:
     vector_store.add_documents(documents=documents, ids=ids)
-    
+
 retriever = vector_store.as_retriever(
-    search_kwargs={"k": 5}
+    search_kwargs={"k": 8}
 )

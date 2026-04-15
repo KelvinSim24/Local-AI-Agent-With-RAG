@@ -1,0 +1,6 @@
+# This creates a hidden file that tells Git what to ignore
+"venv/
+.env
+__pycache__/
+chroma_langchain_db/
+*.pyc" | Out-File -FilePath .gitignore -Encoding utf8
