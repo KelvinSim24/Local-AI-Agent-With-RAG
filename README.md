@@ -35,49 +35,13 @@ The agent demonstrates high reasoning capabilities by synthesizing mixed reviews
 
 ---
 
-## ⚙️ Installation & Setup
+## 🏗️ Architecture Detail
 
-### 1. Prerequisites
-Ensure you have [Ollama](https://ollama.com/) installed and running.
+**Ingestion**: vector.py processes realistic_restaurant_reviews.csv, generates high-dimensional vectors using qwen3-embedding, and persists them in a local chroma_langchain_db folder.
 
-### 2. Pull the Models
-⚙️ Installation & Setup
-1. Prerequisites
-Ensure you have Ollama installed and running on your machine.
+**Retrieval**: The system uses semantic similarity search to pull the top 8 most relevant context chunks based on the user's natural language query.
 
-2. Pull the Models
-Open your terminal and run:
+**Generation**: The gemma4 model acts as the reasoning engine, synthesizing the retrieved reviews into a structured, human-readable summary.
 
-ollama pull gemma4:e4b
-ollama pull qwen3-embedding:4b
-
-3. Setup Environment
-# Clone the repository
-git clone https://github.com/KelvinSim24/Local-AI-Agent-With-RAG.git
-cd Local-AI-Agent-With-RAG
-
-# Create and activate virtual environment
-python -m venv venv
-
-# On Windows:
-.\venv\Scripts\activate
-
-# On Mac/Linux:
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-4. Run the Agent
-
-python main.py
-
-🏗️ Architecture Detail
-Ingestion: vector.py processes realistic_restaurant_reviews.csv, generates high-dimensional vectors using qwen3-embedding, and persists them in a local chroma_langchain_db folder.
-
-Retrieval: The system uses semantic similarity search to pull the top 8 most relevant context chunks based on the user's natural language query.
-
-Generation: The gemma4 model acts as the reasoning engine, synthesizing the retrieved reviews into a structured, human-readable summary.
-
-📜 License
+## 📜 License
 Distributed under the MIT License.
